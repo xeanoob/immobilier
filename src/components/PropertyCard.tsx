@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { Property } from "@/types/property";
+import { TransitionLink } from "@/components/PageTransition";
 
 /* ─────────────────────────────────────────────────────────────
    PROPERTY CARD — Carte de bien réutilisable
@@ -10,7 +11,7 @@ import type { Property } from "@/types/property";
 
 export default function PropertyCard({ property }: { property: Property }) {
   return (
-    <a
+    <TransitionLink
       href={`/biens/${property.slug}`}
       className="group block cursor-pointer"
     >
@@ -51,6 +52,6 @@ export default function PropertyCard({ property }: { property: Property }) {
       <p className="mt-3 font-display text-lg font-700 text-marine">
         {property.price}
       </p>
-    </a>
+    </TransitionLink>
   );
 }

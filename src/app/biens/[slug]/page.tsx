@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PropertyCard from "@/components/PropertyCard";
 import { PROPERTIES, TEAM } from "@/data/demo";
+import { TransitionLink } from "@/components/PageTransition";
 
 /* ─────────────────────────────────────────────────────────────
    FICHE BIEN — Page détail d'une propriété
@@ -169,12 +170,12 @@ function PropertyDetailContent({ slug }: { slug: string }) {
                     </a>
                   </div>
 
-                  <a
+                  <TransitionLink
                     href="/contact"
                     className="block w-full text-center px-6 py-3.5 font-body text-[13px] font-bold uppercase tracking-[0.12em] text-blanc bg-bleu hover:bg-bleu-hover transition-colors rounded-full"
                   >
                     Demander une visite
-                  </a>
+                  </TransitionLink>
                 </div>
               </div>
             </div>
