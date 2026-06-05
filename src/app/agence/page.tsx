@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
 import { TEAM } from "@/data/demo";
+import { TransitionLink } from "@/components/PageTransition";
 
 /* ─────────────────────────────────────────────────────────────
    L'AGENCE — Sans animations IA
@@ -114,9 +115,9 @@ export default function AgencePage() {
             <p className="font-sans text-[16px] text-blanc/60 mb-8">
               Prenez rendez-vous avec un de nos agents pour discuter de votre projet immobilier.
             </p>
-            <a href="/contact" className="inline-block px-10 py-3.5 font-body text-[13px] font-bold uppercase tracking-[0.12em] text-marine bg-blanc hover:bg-creme transition-colors rounded-full">
+            <TransitionLink href="/contact" className="inline-block px-10 py-3.5 font-body text-[13px] font-bold uppercase tracking-[0.12em] text-marine bg-blanc hover:bg-creme transition-colors rounded-full">
               Nous contacter
-            </a>
+            </TransitionLink>
           </div>
         </section>
       </main>

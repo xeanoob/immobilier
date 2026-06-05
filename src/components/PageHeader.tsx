@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { TransitionLink } from "@/components/PageTransition";
 
 /* ─────────────────────────────────────────────────────────────
    PAGE HEADER — Sans Framer Motion
@@ -28,13 +29,13 @@ export default function PageHeader({
       <div className="relative z-10 max-w-[1400px] mx-auto w-full px-5 lg:px-12 pb-10 lg:pb-14">
         {breadcrumb && (
           <nav className="mb-4 flex items-center gap-2 font-sans text-[12px] text-blanc/50">
-            <a href="/" className="hover:text-blanc transition-colors">Accueil</a>
+            <TransitionLink href="/" className="hover:text-blanc transition-colors">Accueil</TransitionLink>
             {breadcrumb.map((item) => (
               <span key={item.href} className="flex items-center gap-2">
                 <span>/</span>
-                <a href={item.href} className="hover:text-blanc transition-colors">
+                <TransitionLink href={item.href} className="hover:text-blanc transition-colors">
                   {item.label}
-                </a>
+                </TransitionLink>
               </span>
             ))}
           </nav>
