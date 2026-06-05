@@ -1,26 +1,112 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─────────────────────────────────────────────
+   CHARTE GRAPHIQUE — Les Agents de l'Immobilier
+   
+   Palette extraite du site de référence.
+   Poussée vers un style "Magazine d'Architecture".
+   ───────────────────────────────────────────── */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* ── Bleus profonds — identité de marque ── */
+  --color-marine: #002046;
+  --color-marine-deep: #00335A;
+  --color-marine-mid: #004274;
+  --color-bleu: #00A2E4;
+  --color-bleu-hover: #0091CC;
+  --color-bleu-pale: #E8F6FC;
+
+  /* ── Neutres — texte & fonds ── */
+  --color-noir: #1D2327;
+  --color-gris-800: #2F3633;
+  --color-gris-600: #5F5E5E;
+  --color-gris-400: #7A7A7A;
+  --color-gris-300: #A6A6A6;
+  --color-gris-200: #D5D5D5;
+  --color-gris-100: #F1F1F1;
+  --color-creme: #F7F7F5;
+  --color-blanc: #FFFFFF;
+
+  /* ── Accent secondaire ── */
+  --color-vert: #61CE70;
+
+  /* ── Typographie ── */
+  --font-display: "Jost", "Inter", sans-serif;
+  --font-body: "Quicksand", "Inter", sans-serif;
+  --font-sans: "Open Sans", "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* ─────────────────────────────────────────────
+   BASE TYPOGRAPHIQUE
+   ───────────────────────────────────────────── */
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-blanc);
+  color: var(--color-noir);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--color-bleu);
+  color: var(--color-blanc);
+}
+
+/* ─────────────────────────────────────────────
+   UTILITAIRES ÉDITORIAUX
+   ───────────────────────────────────────────── */
+
+/* Trait animé au hover */
+.editorial-line {
+  position: relative;
+  display: inline-block;
+}
+.editorial-line::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-bleu);
+  transition: width 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.editorial-line:hover::after {
+  width: 100%;
+}
+
+/* Zoom image dans son cadre */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img,
+.img-zoom > div {
+  transition: transform 1.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform;
+}
+.img-zoom:hover img,
+.img-zoom:hover > div {
+  transform: scale(1.07);
+}
+
+/* Reveal au scroll — appliqué par Framer Motion */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--color-creme); }
+::-webkit-scrollbar-thumb { background: var(--color-gris-300); }
+::-webkit-scrollbar-thumb:hover { background: var(--color-bleu); }
+
+/* ── Keyframe hero ── */
+@keyframes slowDrift {
+  from { transform: scale(1.0); }
+  to { transform: scale(1.08); }
 }
