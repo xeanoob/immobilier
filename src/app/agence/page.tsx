@@ -1,7 +1,3 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -9,7 +5,7 @@ import PageHeader from "@/components/PageHeader";
 import { TEAM } from "@/data/demo";
 
 /* ─────────────────────────────────────────────────────────────
-   L'AGENCE — Présentation, équipe, valeurs, chiffres
+   L'AGENCE — Sans animations IA
    ───────────────────────────────────────────────────────────── */
 
 const VALUES = [
@@ -20,11 +16,6 @@ const VALUES = [
 ];
 
 export default function AgencePage() {
-  const histRef = useRef(null);
-  const histInView = useInView(histRef, { once: true, margin: "-80px" });
-  const teamRef = useRef(null);
-  const teamInView = useInView(teamRef, { once: true, margin: "-60px" });
-
   return (
     <>
       <Navbar />
@@ -35,21 +26,14 @@ export default function AgencePage() {
           breadcrumb={[{ label: "L'agence", href: "/agence" }]}
         />
 
-        {/* ── Notre histoire — image décalée ── */}
+        {/* ── Notre histoire ── */}
         <section className="bg-blanc py-16 lg:py-24 overflow-hidden">
           <div className="max-w-[1400px] mx-auto px-5 lg:px-12">
-            <motion.div
-              ref={histRef}
-              initial={{ opacity: 0, y: 40 }}
-              animate={histInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8 }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center"
-            >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-0 items-center">
               <div className="lg:col-span-5 relative">
                 <div className="img-zoom relative aspect-[3/4] rounded-[4px] overflow-hidden">
-                  <Image src="/apartment-paris.png" alt="Notre agence" fill className="object-cover" sizes="40vw" />
+                  <Image src="/hero-real-2.jpg" alt="Notre agence" fill className="object-cover" sizes="40vw" />
                 </div>
-                {/* Décoration bleue derrière */}
                 <div className="hidden lg:block absolute -bottom-6 -left-6 w-32 h-32 bg-bleu/10 rounded-[4px] -z-10" />
               </div>
 
@@ -60,20 +44,20 @@ export default function AgencePage() {
                 </h2>
                 <div className="space-y-4 font-sans text-[15px] text-gris-600 leading-relaxed">
                   <p>
-                    Fondée en 2012, Les Agents de l&apos;Immobilier est née d&apos;une conviction simple : 
+                    Fondée en 2012, Les Agents de l&apos;Immobilier est née d&apos;une conviction simple :
                     chaque projet immobilier mérite un accompagnement humain, réactif et transparent.
                   </p>
                   <p>
-                    Notre indépendance est notre force. Libres de tout réseau, nous sélectionnons 
+                    Notre indépendance est notre force. Libres de tout réseau, nous sélectionnons
                     les meilleurs outils et méthodes pour servir vos intérêts, et uniquement les vôtres.
                   </p>
                   <p>
-                    Implantés au cœur de Montrouge et actifs sur l&apos;ensemble des Hauts-de-Seine, 
+                    Implantés au cœur de Montrouge et actifs sur l&apos;ensemble des Hauts-de-Seine,
                     nous cultivons une connaissance fine du terrain qui fait toute la différence.
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
@@ -86,12 +70,8 @@ export default function AgencePage() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {VALUES.map((v, i) => (
-                <motion.div
+                <div
                   key={v.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
                   className="bg-blanc rounded-[4px] p-7 shadow-[0_2px_16px_rgba(0,32,70,0.04)] hover:shadow-[0_8px_30px_rgba(0,32,70,0.08)] transition-shadow"
                 >
                   <div className="w-10 h-10 rounded-full bg-bleu-pale flex items-center justify-center text-bleu mb-4">
@@ -99,35 +79,29 @@ export default function AgencePage() {
                   </div>
                   <h3 className="font-display text-lg font-700 text-marine mb-2">{v.title}</h3>
                   <p className="font-sans text-[14px] text-gris-600 leading-relaxed">{v.desc}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* ── Équipe ── */}
-        <section ref={teamRef} className="bg-blanc py-16 lg:py-24">
+        <section className="bg-blanc py-16 lg:py-24">
           <div className="max-w-[1400px] mx-auto px-5 lg:px-12">
             <div className="text-center mb-14">
               <p className="font-body text-[12px] font-semibold uppercase tracking-[0.25em] text-bleu mb-2">L&apos;équipe</p>
               <h2 className="font-display text-3xl lg:text-4xl font-800 text-marine">Les visages derrière votre projet</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12">
-              {TEAM.map((member, i) => (
-                <motion.div
-                  key={member.name}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={teamInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: i * 0.15 }}
-                  className="text-center group"
-                >
+              {TEAM.map((member) => (
+                <div key={member.name} className="text-center group">
                   <div className="relative w-48 h-48 mx-auto mb-5 rounded-full overflow-hidden border-4 border-creme group-hover:border-bleu/30 transition-colors">
                     <Image src={member.image} alt={member.name} fill className="object-cover" sizes="200px" />
                   </div>
                   <h3 className="font-display text-xl font-700 text-marine">{member.name}</h3>
                   <p className="font-sans text-[13px] text-bleu font-semibold mt-1">{member.role}</p>
                   <p className="font-sans text-[13px] text-gris-400 mt-2">{member.phone}</p>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

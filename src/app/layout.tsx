@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Jost, Quicksand, Open_Sans } from "next/font/google";
+import { TransitionProvider } from "@/components/PageTransition";
 import "./globals.css";
 
 /* ─────────────────────────────────────────────
@@ -47,7 +48,10 @@ export default function RootLayout({
       lang="fr"
       className={`${jost.variable} ${quicksand.variable} ${openSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <TransitionProvider>{children}</TransitionProvider>
+      </body>
     </html>
   );
 }
+

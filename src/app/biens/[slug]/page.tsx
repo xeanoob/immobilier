@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -34,8 +33,7 @@ export default function PropertyDetailPage({ params }: { params: Promise<{ slug:
 function PropertyDetailContent({ slug }: { slug: string }) {
   const property = getPropertyBySlug(slug);
   const agent = TEAM[0];
-  const descRef = useRef(null);
-  const descInView = useInView(descRef, { once: true, margin: "-60px" });
+
 
   const similar = PROPERTIES.filter((p) => p.id !== property.id).slice(0, 3);
 
@@ -109,12 +107,7 @@ function PropertyDetailContent({ slug }: { slug: string }) {
                 </div>
 
                 {/* Description */}
-                <motion.div
-                  ref={descRef}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={descInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6 }}
-                >
+                <div>
                   <h2 className="font-display text-xl font-700 text-marine mb-4">Description</h2>
                   <div className="space-y-4 font-sans text-[15px] text-gris-600 leading-relaxed">
                     <p>{property.subtitle}</p>
@@ -143,7 +136,7 @@ function PropertyDetailContent({ slug }: { slug: string }) {
                       </div>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               </div>
 
               {/* ── Colonne droite : agent + CTA ── */}

@@ -1,7 +1,5 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { TransitionLink } from "@/components/PageTransition";
 
 /* ─────────────────────────────────────────────────────────────
    FOOTER — Les Agents de l'Immobilier
@@ -52,12 +50,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <TransitionLink
                     href={link.href}
                     className="font-sans text-[14px] text-blanc/60 hover:text-bleu transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </TransitionLink>
                 </li>
               ))}
             </ul>

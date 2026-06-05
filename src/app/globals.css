@@ -93,11 +93,7 @@ body {
   transform: scale(1.07);
 }
 
-/* Reveal au scroll — appliqué par Framer Motion */
-.reveal-up {
-  opacity: 0;
-  transform: translateY(40px);
-}
+/* Reveal au scroll — supprimé (plus de Framer Motion) */
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 5px; }
@@ -109,4 +105,45 @@ body {
 @keyframes slowDrift {
   from { transform: scale(1.0); }
   to { transform: scale(1.08); }
+}
+
+/* ─────────────────────────────────────────────
+   TRANSITION DE PAGE — Overlay marine + logo
+   ───────────────────────────────────────────── */
+
+/* État par défaut : l'overlay est hors écran en bas */
+.transition-idle {
+  transform: translateY(100%);
+}
+
+/* Entrée : l'overlay monte */
+.transition-enter {
+  animation: transitionSlideUp 0.45s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+/* Sortie : l'overlay descend */
+.transition-leave {
+  animation: transitionSlideDown 0.45s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes transitionSlideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0%); }
+}
+
+@keyframes transitionSlideDown {
+  from { transform: translateY(0%); }
+  to { transform: translateY(-100%); }
+}
+
+/* Logo dans l'overlay */
+.transition-logo {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.transition-logo-visible {
+  opacity: 1;
+  transform: scale(1);
 }
