@@ -2,6 +2,7 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
+import { TransitionLink } from "@/components/PageTransition";
 
 /* ─────────────────────────────────────────────────────────────
    VENDRE — Sans animations IA
@@ -79,9 +80,9 @@ export default function VendrePage() {
             <p className="font-sans text-[16px] text-gris-600 mb-8">
               Commencez par une estimation gratuite et sans engagement de votre bien.
             </p>
-            <a href="/estimer" className="inline-block px-10 py-3.5 font-body text-[13px] font-bold uppercase tracking-[0.12em] text-blanc bg-bleu hover:bg-bleu-hover transition-colors rounded-full">
+            <TransitionLink href="/estimer" className="inline-block px-10 py-3.5 font-body text-[13px] font-bold uppercase tracking-[0.12em] text-blanc bg-bleu hover:bg-bleu-hover transition-colors rounded-full">
               Estimer mon bien
-            </a>
+            </TransitionLink>
           </div>
         </section>
       </main>
